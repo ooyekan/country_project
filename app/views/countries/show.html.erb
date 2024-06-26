@@ -1,0 +1,15 @@
+<h1><%= @country['name']['common'] %></h1>
+
+<% if @country %>
+  <p><strong>Capital:</strong> <%= @country['capital']&.join(', ') %></p>
+  <p><strong>Region:</strong> <%= @country['region'] %></p>
+  <p><strong>Subregion:</strong> <%= @country['subregion'] %></p>
+  <p><strong>Population:</strong> <%= @country['population'] %></p>
+  <p><strong>Languages:</strong> <%= @country['languages'].values.join(', ') %></p>
+  <!-- Add more details as needed -->
+  <p><strong>Flags:</strong> <%= image_tag(@country['flags']['png'], alt: 'Flag') %></p>
+<% else %>
+  <p>Country details not available.</p>
+<% end %>
+
+<%= link_to 'Back', countries_path %>

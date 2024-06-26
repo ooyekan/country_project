@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  capital: MyString
+  region: MyString
+  languages: MyString
+  currency: MyString
+  maps: MyString
+  timezones: MyString
+  continents: MyString
+  flags: MyString
+
+two:
+  name: MyString
+  capital: MyString
+  region: MyString
+  languages: MyString
+  currency: MyString
+  maps: MyString
+  timezones: MyString
+  continents: MyString
+  flags: MyString

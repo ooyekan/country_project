@@ -1,0 +1,32 @@
+<!-- app/views/countries/index.html.erb -->
+<h1>List of Countries</h1>
+<%= form_with url: search_countries_path, method: :get, local: true do %>
+  <div>
+    <%= label_tag :query, "Search for a country:" %>
+    <%= text_field_tag :query, params[:query] %>
+  </div>
+  <div>
+    <%= label_tag :region, "Search by region:" %>
+    <%= select_tag :region, options_for_select([
+        'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'
+      ], params[:region]), prompt: 'Select a region' %>
+  </div>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<% if @countries.any? %>
+<ul>
+  <% @countries.each do |country| %>
+    <div class="country">
+    <h2><%= country['name']['common'] %></h2>
+      <p><strong>Capital:</strong> <%= country['capital']&.join(', ') %></p>
+      <p><strong>Region:</strong> <%= country['region'] %></p>
+      <p><strong>Flags:</strong> <%= image_tag(country['flags']['png'], alt: 'Flag') %></p>
+      <%= button_to "View More Details", country_path(name: country['name']['common']), method: :get, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</ul>
+<% elsif params[:query].present? || params[:region].present? %>
+  <p>No countries found for your search.</p>
+<% end %>
+
